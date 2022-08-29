@@ -1,58 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons'
+import { Layout, Menu } from 'antd'
+import React from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
-  );
-}
+const { Header, Content, Footer, Sider } = Layout
 
-export default App;
+const App: React.FC = () => (
+  <Layout>
+    <Sider
+      breakpoint='lg'
+      collapsedWidth='0'
+      onBreakpoint={(broken) => {
+        console.log(broken)
+      }}
+      onCollapse={(collapsed, type) => {
+        console.log(collapsed, type)
+      }}
+    >
+      <div className='logo' />
+      <Menu
+        theme='dark'
+        mode='inline'
+        defaultSelectedKeys={['4']}
+        items={[UserOutlined, VideoCameraOutlined, UploadOutlined, UserOutlined].map(
+          (icon, index) => ({
+            key: String(index + 1),
+            icon: React.createElement(icon),
+            label: `nav ${index + 1}`,
+          })
+        )}
+      />
+    </Sider>
+    <Layout>
+      <Header className='site-layout-sub-header-background' style={{ padding: 0 }} />
+      <Content style={{ margin: '24px 16px 0' }}>
+        <div className='site-layout-background' style={{ padding: 24, minHeight: 700 }}>
+          content
+        </div>
+      </Content>
+      <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+    </Layout>
+  </Layout>
+)
+
+export default App
