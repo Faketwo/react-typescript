@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
 
 const useClock = () => {
-  const [timeString, setTimeString] = useState('數字鐘啟動中')
+  const [timeString, setTimeString] = useState('starting...')
 
   useEffect(() => {
     const id = setInterval(() => {
       const currentTime = new Date()
       const localeTimeString = currentTime.toLocaleTimeString('en-US', {
-        month: 'long',
+        month: '2-digit',
         day: 'numeric',
         year: 'numeric',
         hour12: true,

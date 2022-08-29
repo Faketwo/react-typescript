@@ -1,27 +1,27 @@
 import { Layout } from 'antd'
 import React from 'react'
 import { useLocation } from 'react-router-dom'
+import useLanguage from '../app/useLanguage'
 
 const { Header } = Layout
 
 const AppHeader: React.FC = () => {
   const location = useLocation()
   const { pathname } = location
+  const { t } = useLanguage()
 
   const decideTitle = () => {
     switch (pathname) {
       case '/react-typescript/':
-        return 'Home'
+        return t('home')
       case '/react-typescript/clock':
-        return 'Clock'
-      case '/react-typescript/product':
-        return 'Product'
-      case '/react-typescript/contact':
-        return 'Contact'
+        return t('clock')
+      case '/react-typescript/language':
+        return t('language')
       case '/react-typescript/counter':
-        return 'Counter'
+        return t('counter')
       default:
-        return 'None'
+        return 'No title'
     }
   }
 

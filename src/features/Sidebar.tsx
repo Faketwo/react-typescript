@@ -3,17 +3,18 @@ import {
   ClockCircleOutlined,
   FundProjectionScreenOutlined,
   HomeOutlined,
-  UserOutlined,
 } from '@ant-design/icons'
 import { Layout, Menu } from 'antd'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import useLanguage from '../app/useLanguage'
 
 const { Sider } = Layout
 
 const Sidebar: React.FC = () => {
-  const labelList = ['home', 'clock', 'product', 'contact', 'counter']
+  const labelList = ['home', 'clock', 'language', 'counter']
   const navigate = useNavigate()
+  const { t } = useLanguage()
 
   return (
     <Sider
@@ -35,12 +36,11 @@ const Sidebar: React.FC = () => {
           HomeOutlined,
           AreaChartOutlined,
           FundProjectionScreenOutlined,
-          UserOutlined,
           ClockCircleOutlined,
         ].map((icon, index) => ({
           key: labelList[index],
           icon: React.createElement(icon),
-          label: `${labelList[index]}`,
+          label: `${t(labelList[index])}`,
           onClick: function ({ key }) {
             if (key === 'home') navigate('/react-typescript/')
             else navigate(`/react-typescript/${key}`)
