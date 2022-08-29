@@ -12,8 +12,8 @@ const AppHeader: React.FC = () => {
     switch (pathname) {
       case '/react-typescript/':
         return 'Home'
-      case '/react-typescript/about':
-        return 'About'
+      case '/react-typescript/clock':
+        return 'Clock'
       case '/react-typescript/product':
         return 'Product'
       case '/react-typescript/contact':

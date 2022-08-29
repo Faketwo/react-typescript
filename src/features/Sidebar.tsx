@@ -12,19 +12,19 @@ import { useNavigate } from 'react-router-dom'
 const { Sider } = Layout
 
 const Sidebar: React.FC = () => {
-  const labelList = ['home', 'about', 'product', 'contact', 'counter']
+  const labelList = ['home', 'clock', 'product', 'contact', 'counter']
   const navigate = useNavigate()
 
   return (
     <Sider
       breakpoint='lg'
       collapsedWidth='0'
-      onBreakpoint={(broken) => {
-        console.log(broken)
-      }}
-      onCollapse={(collapsed, type) => {
-        console.log(collapsed, type)
-      }}
+      // onBreakpoint={(broken) => {
+      //   console.log(broken)
+      // }}
+      // onCollapse={(collapsed, type) => {
+      //   console.log(collapsed, type)
+      // }}
     >
       <div className='logo' />
       <Menu

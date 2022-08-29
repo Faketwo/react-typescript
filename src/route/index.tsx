@@ -1,14 +1,14 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { Counter } from '../features/counter/Counter'
-import About from './About'
+import Clock from '../features/clock'
+import Counter from '../features/counter'
 import Contact from './Contact'
 import Home from './Home'
 import Product from './Product'
 
 const AppRouter: React.FC = () => (
   <Routes>
-    <Route path='/react-typescript/about' element={<About />} />
+    <Route path='/react-typescript/clock' element={<Clock />} />
     <Route path='/react-typescript/product' element={<Product />} />
     <Route path='/react-typescript/contact' element={<Contact />} />
     <Route path='/react-typescript/counter' element={<Counter />} />
