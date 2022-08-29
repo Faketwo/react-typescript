@@ -1,16 +1,15 @@
 {
   "files": {
-    "main.css": "/react-typescript/static/css/main.ae71d505.css",
-    "main.js": "/react-typescript/static/js/main.1937f821.js",
-    "static/js/402.14a6f560.chunk.js": "/react-typescript/static/js/402.14a6f560.chunk.js",
-    "static/media/logo.svg": "/react-typescript/static/media/logo.b2e5a01e505f739f1484b881277d5186.svg",
+    "main.css": "/react-typescript/static/css/main.c389fc33.css",
+    "main.js": "/react-typescript/static/js/main.1609b7ee.js",
+    "static/js/402.c1e7875b.chunk.js": "/react-typescript/static/js/402.c1e7875b.chunk.js",
     "index.html": "/react-typescript/index.html",
-    "main.ae71d505.css.map": "/react-typescript/static/css/main.ae71d505.css.map",
-    "main.1937f821.js.map": "/react-typescript/static/js/main.1937f821.js.map",
-    "402.14a6f560.chunk.js.map": "/react-typescript/static/js/402.14a6f560.chunk.js.map"
+    "main.c389fc33.css.map": "/react-typescript/static/css/main.c389fc33.css.map",
+    "main.1609b7ee.js.map": "/react-typescript/static/js/main.1609b7ee.js.map",
+    "402.c1e7875b.chunk.js.map": "/react-typescript/static/js/402.c1e7875b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ae71d505.css",
-    "static/js/main.1937f821.js"
+    "static/css/main.c389fc33.css",
+    "static/js/main.1609b7ee.js"
   ]
 }
