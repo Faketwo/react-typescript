@@ -5,6 +5,7 @@ import Clock from '../features/clock'
 import Counter from '../features/counter'
 import Language from '../features/language'
 import NotificationComp from '../features/notification'
+import TableComp from '../features/table'
 import Home from './Home'
 
 const AppRouter: React.FC = () => (
@@ -14,6 +15,7 @@ const AppRouter: React.FC = () => (
     <Route path='/react-typescript/counter' element={<Counter />} />
     <Route path='/react-typescript/carousel' element={<CarouselComp />} />
     <Route path='/react-typescript/notification' element={<NotificationComp />} />
+    <Route path='/react-typescript/table' element={<TableComp />} />
     <Route path='/react-typescript' element={<Home />} />
   </Routes>
 )

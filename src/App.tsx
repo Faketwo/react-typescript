@@ -1,11 +1,12 @@
 import { Layout } from 'antd'
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
+import AppFooter from './features/AppFooter'
 import AppHeader from './features/AppHeader'
 import Sidebar from './features/Sidebar'
 import AppRouter from './route'
 
-const { Content, Footer } = Layout
+const { Content } = Layout
 
 const App: React.FC = () => (
   <BrowserRouter>
@@ -18,7 +19,7 @@ const App: React.FC = () => (
             <AppRouter />
           </div>
         </Content>
-        <Footer style={{ textAlign: 'center' }}>Footer</Footer>
+        <AppFooter />
       </Layout>
     </Layout>
   </BrowserRouter>

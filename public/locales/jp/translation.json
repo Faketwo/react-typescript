@@ -2,13 +2,14 @@
   "hello": "こんにちは",
   "home": "ホームページ",
   "clock": "時計",
+  "current time": "現在の時刻",
   "language": "言語",
+  "switch language": "言語を切り替える",
   "counter": "カウンター",
   "carousel": "カルーセル",
   "notification": "お知らせ",
   "notification title": "お知らせのタイトル",
   "notification content": "お知らせの內容",
   "notification open": "お知らせウィンドウ",
-  "switch language": "言語を切り替える",
-  "current time": "現在の時刻"
+  "table": "表"
 }

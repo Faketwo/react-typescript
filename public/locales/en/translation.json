@@ -2,13 +2,14 @@
   "hello": "hello",
   "home": "Home",
   "clock": "Clock",
+  "current time": "current time",
   "language": "Language",
+  "switch language": "switch language",
   "counter": "Counter",
   "carousel": "Carousel",
   "notification": "Notification",
   "notification title": "Notification Title",
   "notification content": "This is the content of the notification.",
   "notification open": "Open the notification box",
-  "switch language": "switch language",
-  "current time": "current time"
+  "table": "Table"
 }
