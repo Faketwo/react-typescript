@@ -4,6 +4,11 @@
   "clock": "時鐘",
   "language": "語言",
   "counter": "計數器",
+  "carousel": "旋轉木馬",
+  "notification": "通知",
+  "notification title": "通知標題",
+  "notification content": "通知內容",
+  "notification open": "彈出通知視窗",
   "switch language": "切換語言",
   "current time": "現在時間"
 }

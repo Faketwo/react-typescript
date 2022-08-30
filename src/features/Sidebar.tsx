@@ -12,7 +12,7 @@ import useLanguage from '../app/useLanguage'
 const { Sider } = Layout
 
 const Sidebar: React.FC = () => {
-  const labelList = ['home', 'clock', 'language', 'counter']
+  const labelList = ['home', 'clock', 'language', 'counter', 'carousel', 'notification']
   const navigate = useNavigate()
   const { t } = useLanguage()
 
@@ -36,6 +36,8 @@ const Sidebar: React.FC = () => {
           HomeOutlined,
           AreaChartOutlined,
           FundProjectionScreenOutlined,
+          ClockCircleOutlined,
+          ClockCircleOutlined,
           ClockCircleOutlined,
         ].map((icon, index) => ({
           key: labelList[index],

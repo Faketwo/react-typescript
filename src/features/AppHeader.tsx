@@ -20,6 +20,10 @@ const AppHeader: React.FC = () => {
         return t('language')
       case '/react-typescript/counter':
         return t('counter')
+      case '/react-typescript/carousel':
+        return t('carousel')
+      case '/react-typescript/notification':
+        return t('notification')
       default:
         return 'No title'
     }
