@@ -1,67 +1,60 @@
 import { Space, Table, Tag } from 'antd'
-import type { ColumnsType } from 'antd/es/table'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { getUserList } from '../../app/firebase'
 import { useAppSelector } from '../../app/hooks'
+import ModalComp from '../modal'
 import { DataType, selectTable } from './slice'
 
-const columns: ColumnsType<DataType> = [
-  {
-    title: 'Name',
-    dataIndex: 'name',
-    key: 'name',
-    render: (text) => <a>{text}</a>,
-  },
-  {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age',
-  },
-  {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
-  },
-  {
-    title: 'Tags',
-    key: 'tags',
-    dataIndex: 'tags',
-    render: (_, { tags }) => (
-      <>
-        {tags.map((tag) => {
-          let color = tag.length > 5 ? 'geekblue' : 'green'
-          if (tag === 'loser') {
-            color = 'volcano'
-          }
-          return (
-            <Tag color={color} key={tag}>
-              {tag.toUpperCase()}
-            </Tag>
-          )
-        })}
-      </>
-    ),
-  },
-  {
-    title: 'Action',
-    key: 'action',
-    render: (_, record) => (
-      <Space size='middle'>
-        <a>Invite {record.name}</a>
-        <a>Delete</a>
-      </Space>
-    ),
-  },
-]
+const { Column } = Table
 
 const TableComp: React.FC = () => {
   const tableData = useAppSelector(selectTable)
 
   useEffect(() => {
     getUserList()
+    // updateUserList()
   }, [])
 
-  return <Table columns={columns} dataSource={tableData} />
+  const [isModalVisible, setIsModalVisible] = useState(false)
+
+  const showModal = () => {
+    setIsModalVisible(true)
+  }
+
+  return (
+    <>
+      <Table dataSource={tableData}>
+        <Column title='Name' dataIndex='name' key='name' />
+        <Column title='Age' dataIndex='age' key='age' />
+        <Column title='Address' dataIndex='address' key='address' />
+        <Column
+          title='Tags'
+          dataIndex='tags'
+          key='tags'
+          render={(tags: string[]) => (
+            <>
+              {tags.map((tag) => (
+                <Tag color='blue' key={tag}>
+                  {tag}
+                </Tag>
+              ))}
+            </>
+          )}
+        />
+        <Column
+          title='Action'
+          key='action'
+          render={(_: any, record: DataType) => (
+            <Space size='middle'>
+              <a onClick={showModal}>Invite {record.name}</a>
+              <a>Delete</a>
+            </Space>
+          )}
+        />
+      </Table>
+      <ModalComp isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} />
+    </>
+  )
 }
 
 export default TableComp

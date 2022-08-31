@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app'
-import { getDatabase, onValue, query, ref } from 'firebase/database'
+import { getDatabase, onValue, query, ref, update } from 'firebase/database'
 import { getTableList } from '../features/table/slice'
 import { store } from './store'
 
@@ -19,12 +19,28 @@ const app = initializeApp(firebaseConfig)
 const db = getDatabase(app)
 const rootUserRef = query(ref(db, 'root/user'))
 
-// 讀取realtime db
+// read realtime DB
 export const getUserList = () => {
   onValue(rootUserRef, (snapshot) => {
     const rawData = snapshot.val() || {}
     store.dispatch(getTableList(rawData))
   })
+}
+
+// update realtime DB
+export const updateUserList = () => {
+  // 模擬update資料
+  const postData = {
+    key: 3,
+    name: 'Joe White YA',
+    age: 12,
+    address: 'Sidney No. 1 Lake Park',
+    tags: ['cool', 'teacher'],
+  }
+
+  const updates: Record<string, any> = {}
+  updates['root/user/' + `${postData.key - 1}`] = postData
+  update(ref(db), updates)
 }
 
 // 覆蓋式寫入
