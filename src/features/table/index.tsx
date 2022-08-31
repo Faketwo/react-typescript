@@ -1,14 +1,9 @@
 import { Space, Table, Tag } from 'antd'
 import type { ColumnsType } from 'antd/es/table'
-import React from 'react'
-
-interface DataType {
-  key: string
-  name: string
-  age: number
-  address: string
-  tags: string[]
-}
+import React, { useEffect } from 'react'
+import { getUserList } from '../../app/firebase'
+import { useAppSelector } from '../../app/hooks'
+import { DataType, selectTable } from './slice'
 
 const columns: ColumnsType<DataType> = [
   {
@@ -59,30 +54,14 @@ const columns: ColumnsType<DataType> = [
   },
 ]
 
-const data: DataType[] = [
-  {
-    key: '1',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-    tags: ['nice', 'developer'],
-  },
-  {
-    key: '2',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['loser'],
-  },
-  {
-    key: '3',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
-  },
-]
+const TableComp: React.FC = () => {
+  const tableData = useAppSelector(selectTable)
 
-const TableComp: React.FC = () => <Table columns={columns} dataSource={data} />
+  useEffect(() => {
+    getUserList()
+  }, [])
+
+  return <Table columns={columns} dataSource={tableData} />
+}
 
 export default TableComp
