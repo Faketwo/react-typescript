@@ -1,12 +1,15 @@
 import { Modal } from 'antd'
 import React from 'react'
+import FormComp from '../form'
+import { DataType } from '../table/slice'
 
 type Props = {
   isModalVisible: boolean
   setIsModalVisible: React.Dispatch<React.SetStateAction<boolean>>
+  modalData: DataType | null
 }
 
-const ModalComp: React.FC<Props> = ({ isModalVisible, setIsModalVisible }) => {
+const ModalComp: React.FC<Props> = ({ isModalVisible, setIsModalVisible,modalData }) => {
   const handleOk = () => {
     setIsModalVisible(false)
   }
@@ -17,9 +20,7 @@ const ModalComp: React.FC<Props> = ({ isModalVisible, setIsModalVisible }) => {
 
   return (
     <Modal title='Basic Modal' visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-      <p>Some contents...</p>
-      <p>Some contents...</p>
-      <p>Some contents...</p>
+      <FormComp modalData={modalData}/>
     </Modal>
   )
 }

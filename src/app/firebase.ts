@@ -28,18 +28,21 @@ export const getUserList = () => {
 }
 
 // update realtime DB
-export const updateUserList = () => {
-  // 模擬update資料
+export const updateUserItem = (updateData: {
+  key: string | undefined
+  name: string
+  age: number
+}) => {
   const postData = {
-    key: 3,
-    name: 'Joe White YA',
-    age: 12,
+    key: updateData.key,
+    name: updateData.name,
+    age: updateData.age,
     address: 'Sidney No. 1 Lake Park',
     tags: ['cool', 'teacher'],
   }
 
   const updates: Record<string, any> = {}
-  updates['root/user/' + `${postData.key - 1}`] = postData
+  updates['root/user/' + `${Number(postData.key) - 1}`] = postData
   update(ref(db), updates)
 }
 

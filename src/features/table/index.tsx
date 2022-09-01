@@ -12,12 +12,13 @@ const TableComp: React.FC = () => {
 
   useEffect(() => {
     getUserList()
-    // updateUserList()
   }, [])
 
   const [isModalVisible, setIsModalVisible] = useState(false)
+  const [modalData, setModalData] = useState<DataType | null>(null)
 
-  const showModal = () => {
+  const showModal = (record: DataType) => {
+    setModalData(record)
     setIsModalVisible(true)
   }
 
@@ -26,7 +27,6 @@ const TableComp: React.FC = () => {
       <Table dataSource={tableData}>
         <Column title='Name' dataIndex='name' key='name' />
         <Column title='Age' dataIndex='age' key='age' />
-        <Column title='Address' dataIndex='address' key='address' />
         <Column
           title='Tags'
           dataIndex='tags'
@@ -46,13 +46,19 @@ const TableComp: React.FC = () => {
           key='action'
           render={(_: any, record: DataType) => (
             <Space size='middle'>
-              <a onClick={showModal}>Invite {record.name}</a>
+              <a onClick={showModal.bind(this, record)}>Edit</a>
               <a>Delete</a>
             </Space>
           )}
         />
       </Table>
-      <ModalComp isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible} />
+      {isModalVisible && (
+        <ModalComp
+          isModalVisible={isModalVisible}
+          setIsModalVisible={setIsModalVisible}
+          modalData={modalData}
+        />
+      )}
     </>
   )
 }
