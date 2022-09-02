@@ -1,4 +1,4 @@
-import { Space, Table, Tag } from 'antd'
+import { Button, Space, Table, Tag } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { getUserList } from '../../app/firebase'
 import { useAppSelector } from '../../app/hooks'
@@ -18,8 +18,19 @@ const TableComp: React.FC = () => {
   const [modalData, setModalData] = useState<DataType | null>(null)
 
   const showModal = (record: DataType) => {
+    if (!tableData) return
     setModalData(record)
     setIsModalVisible(true)
+  }
+
+  const newUserKey = (tableData as DataType[])?.length + 1
+
+  const createUserData = {
+    address: 'Sidney No. 1 Lake Park',
+    age: 0,
+    key: newUserKey,
+    name: '',
+    tags: ['cool', 'teacher'],
   }
 
   return (
@@ -44,7 +55,7 @@ const TableComp: React.FC = () => {
         <Column
           title='Action'
           key='action'
-          render={(_: any, record: DataType) => (
+          render={(_: unknown, record: DataType) => (
             <Space size='middle'>
               <a onClick={showModal.bind(this, record)}>Edit</a>
               <a>Delete</a>
@@ -52,6 +63,9 @@ const TableComp: React.FC = () => {
           )}
         />
       </Table>
+      <Button type='primary' onClick={showModal.bind(this, createUserData)}>
+        Add a new person
+      </Button>
       {isModalVisible && (
         <ModalComp
           isModalVisible={isModalVisible}

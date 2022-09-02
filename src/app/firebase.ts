@@ -29,7 +29,7 @@ export const getUserList = () => {
 
 // update realtime DB
 export const updateUserItem = (updateData: {
-  key: string | undefined
+  key: number | undefined
   name: string
   age: number
 }) => {
