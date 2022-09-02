@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app'
 import { getDatabase, onValue, query, ref, remove, update } from 'firebase/database'
+import { getPerformance } from 'firebase/performance'
 import { DataType, getTableList } from '../features/table/slice'
 import { store } from './store'
 
@@ -16,6 +17,7 @@ const firebaseConfig = {
 }
 
 const app = initializeApp(firebaseConfig)
+getPerformance(app)
 const db = getDatabase(app)
 const rootUserRef = query(ref(db, 'root/user'))
 

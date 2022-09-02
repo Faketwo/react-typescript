@@ -10,12 +10,12 @@ const contentStyle: React.CSSProperties = {
 }
 
 const App = () => {
-  const onChange = (currentSlide: number) => {
-    // console.log(currentSlide)
-  }
+  // const onChange = (currentSlide: number) => {
+  //   console.log(currentSlide)
+  // }
 
   return (
-    <Carousel afterChange={onChange}>
+    <Carousel>
       <div>
         <h3 style={contentStyle}>{'=>'}</h3>
       </div>
