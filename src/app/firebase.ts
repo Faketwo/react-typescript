@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app'
-import { getDatabase, onValue, query, ref, update } from 'firebase/database'
-import { getTableList } from '../features/table/slice'
+import { getDatabase, onValue, query, ref, remove, update } from 'firebase/database'
+import { DataType, getTableList } from '../features/table/slice'
 import { store } from './store'
 
 const firebaseConfig = {
@@ -33,22 +33,20 @@ export const updateUserItem = (updateData: {
   name: string
   age: number
 }) => {
-  const postData = {
+  const postData: DataType = {
     key: updateData.key,
     name: updateData.name,
     age: updateData.age,
     address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
+    tags: ['cute', 'cat'],
   }
 
-  const updates: Record<string, any> = {}
+  const updates: Record<string, DataType> = {}
   updates['root/user/' + `${Number(postData.key) - 1}`] = postData
   update(ref(db), updates)
 }
 
-// 覆蓋式寫入
-// set(dbRef, {
-//   username: 'jiaer',
-//   email: 'jiaer@ckex',
-//   profile_picture: 'jiaer.jpg',
-// })
+// delete realtime DB
+export const deleteUserItem = (key: number) => {
+  remove(ref(db, `root/user/${key - 1}`))
+}

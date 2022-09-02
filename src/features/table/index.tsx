@@ -1,11 +1,25 @@
-import { Button, Space, Table, Tag } from 'antd'
+import { ExclamationCircleOutlined } from '@ant-design/icons'
+import { Button, Modal, Space, Table, Tag } from 'antd'
 import React, { useEffect, useState } from 'react'
-import { getUserList } from '../../app/firebase'
+import { deleteUserItem, getUserList } from '../../app/firebase'
 import { useAppSelector } from '../../app/hooks'
 import ModalComp from '../modal'
 import { DataType, selectTable } from './slice'
 
 const { Column } = Table
+
+const handleDelete = (record: DataType) => {
+  Modal.confirm({
+    title: 'Confirm',
+    icon: <ExclamationCircleOutlined />,
+    content: `Want to delete ${record.name}(${record.age})?`,
+    okText: 'OK',
+    cancelText: 'Cancel',
+    onOk: () => {
+      deleteUserItem(record.key as number)
+    },
+  })
+}
 
 const TableComp: React.FC = () => {
   const tableData = useAppSelector(selectTable)
@@ -58,13 +72,13 @@ const TableComp: React.FC = () => {
           render={(_: unknown, record: DataType) => (
             <Space size='middle'>
               <a onClick={showModal.bind(this, record)}>Edit</a>
-              <a>Delete</a>
+              <a onClick={handleDelete.bind(this, record)}>Delete</a>
             </Space>
           )}
         />
       </Table>
       <Button type='primary' onClick={showModal.bind(this, createUserData)}>
-        Add a new person
+        Add a new cat
       </Button>
       {isModalVisible && (
         <ModalComp

@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import { RootState } from '../../app/store'
 
 export interface DataType {
-  key: number
+  key: number | undefined
   name: string
   age: number
   address: string
